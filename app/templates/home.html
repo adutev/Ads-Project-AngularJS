@@ -1,5 +1,58 @@
-<div class="row">
-	<div class="col-md-2">Left</div>
-	<div class="col-md-8">Center</div>
-	<div class="col-md-2">Right</div>
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-9">
+			<ul>
+				<li ng-repeat="ad in data.ads">
+					<div class="container well">
+						<div class="row">
+							<div class="col-md-7">
+								<h4 class="pull-left">{{ad.title}}</h4>
+							</div>
+							<div class="col-md-5">
+								<span class="pull-right">{{ad.date | date: 'd-MMM-yyyy'}}</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<img class="img-responsive" ng-src="{{ad.imageDataUrl}}" alt="">
+							</div>
+							<div class="col-md-8">
+								<div>{{ad.text}}</div>
+								<div class="row">
+									<div class="col-md-4">
+										<div><strong>Name: </strong></div>
+										<div><strong>Email: </strong></div>
+										<div><strong> Phone: </strong></div>
+									</div>
+									<div class="col-md-8">
+										<div>{{ad.ownerName}}</div>
+										<div>{{ad.ownerEmail}}</div>
+									  	<div>{{ad.ownerPhone}}</div>
+									 </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-3">
+			<div class="panel panel-primary">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Categories</h3>
+			  </div>
+			  <div class="panel-body" ng-repeat="categorie in categories">
+			  	{{categorie.name}}
+			  </div>
+			</div>
+			<div class="panel panel-primary">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Towns</h3>
+			  </div>
+			  <div class="panel-body" ng-repeat="town in towns">
+			  	{{town.name}}
+			  </div>
+			</div>
+		</div>
+	</div>
 </div>
