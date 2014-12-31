@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute', 'angularUtils.directives.dirPagination']);
 app.config(function($routeProvider) {
 	$routeProvider.when('/login', {
 		templateUrl: 'templates/login.html'
@@ -12,4 +12,4 @@ app.config(function($routeProvider) {
 	$routeProvider.otherwise({
 		redirectTo: '/'
 	})
-})
+});
