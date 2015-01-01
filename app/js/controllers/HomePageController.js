@@ -40,4 +40,8 @@ app.controller('HomePageController', function($scope, $location, adsData, townsD
 	categoriesData.getAllCategories(function(resp) {
 		$scope.categories = resp;
 	})
+	$scope.townSelector = '';
+	$scope.logTown = function () {
+		console.log($scope.townSelector)
+	}
 })

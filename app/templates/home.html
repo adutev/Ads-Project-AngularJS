@@ -1,8 +1,9 @@
 <div class="jumbotron">
+<div ng-bind="townSelector"></div>
 	<div class="row">
 		<div class="col-md-9">
 			<ul>
-				<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage" total-items="totalAds"  class="well">
+				<li dir-paginate="ad in adsData.ads | filter: searchQuery | itemsPerPage: adsPerPage" total-items="totalAds"  class="well">
 					<div class="container well">
 						<div class="row">
 							<div class="col-md-7">
@@ -41,16 +42,22 @@
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Categories</h3>
 			  </div>
-			  <div class="panel-body" ng-repeat="categorie in categories">
-			  	{{categorie.name}}
+			  <div class="panel-body" >
+					<select class="form-control">
+							<option value="">Chose a category </option>
+							<option ng-repeat="categorie in categories" value="{{categorie.id}}">{{categorie.name}}</option>
+					</select>
 			  </div>
 			</div>
 			<div class="panel panel-primary">
 			  <div class="panel-heading">
 			    <h3 class="panel-title">Towns</h3>
 			  </div>
-			  <div class="panel-body" ng-repeat="town in towns">
-			  	{{town.name}}
+			  <div class="panel-body">
+				<select class="form-control" ng-model='townSelector' ng-change="logTown()">
+					<option value="" >Chose a town</option>
+					<option value="{{town.name}}" ng-repeat="town in towns">{{town.name}}</option>
+				</select>
 			  </div>
 			</div>
 		</div>
