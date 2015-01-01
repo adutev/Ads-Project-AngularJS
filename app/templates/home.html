@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col-md-9">
 			<ul>
-				<li ng-repeat="ad in data.ads">
+				<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage" total-items="totalAds"  class="well">
 					<div class="container well">
 						<div class="row">
 							<div class="col-md-7">
@@ -55,10 +55,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">Assasa
-		<div class='col-md-6 col-sm-10 col-xs-12 col-centered'>
-	    	<dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.tpl.html">
-	    	</dir-pagination-controls>
-		</div>
-  </div>
 </div>
+<div class="row pagination-div">
+  <div class='col-md-9 col-sm-10 col-xs-12 col-centered'>
+    <dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="templates/dirPagination.tpl.html"></dir-pagination-controls>
+ </div>
