@@ -1,32 +1,37 @@
-var app = angular.module('app', ['ngRoute',
-	'angularUtils.directives.dirPagination',
-	'ui.bootstrap'
+'use strict';
+
+// Declare app level module which depends on views, and components
+var app = angular.module('adsApplication', [
+	'ngRoute'
 ]);
 
-app.constant('baseUrl', 'http://softuni-ads.azurewebsites.net/api/');
-app.constant('AUTH_EVENTS', {
-	loginSuccess: 'auth-login-success',
-	loginFailed: 'auth-login-failed',
-	logoutSuccess: 'auth-logout-success',
-	sessionTimeout: 'auth-session-timeout',
-	notAuthenticated: 'auth-not-authenticated',
-	notAuthorized: 'auth-not-authorized'
-});
-
-app.config(function($routeProvider) {
-	$routeProvider.when('/login', {
-		templateUrl: 'templates/login.html',
-		controller: 'LoginController'
+app.config(['$routeProvider', function($routeProvider) {
+	$routeProvider.when('/', {
+		templateUrl: 'partials/home.html'
 	});
 	$routeProvider.when('/register', {
-		templateUrl: 'templates/register.html',
-		controller: 'RegisterController'
+		templateUrl: 'partials/register.html'
 	});
-	$routeProvider.when('/', {
-		templateUrl: 'templates/home.html',
-		controller: 'HomePageController'
+	$routeProvider.when('/login', {
+		templateUrl: 'partials/login.html',
+		controller: 'LoginController'
+	});
+	$routeProvider.when('/unauthorized', {
+		templateUrl: 'partials/notAuthorized.html'
 	});
 	$routeProvider.otherwise({
 		redirectTo: '/'
-	})
+	});
+}]);
+
+app.run(function($rootScope, $location) {
+	$rootScope.$on('$routeChangeStart', function(event, next) {
+		var path = $location.path();
+		if ($rootScope.userIsLogged && (path === '/login' ||
+			path === '/register')) {
+			$location.path('/home');
+		}
+	});
 });
+
+app.constant('BASE_URL', 'http://softuni-ads.azurewebsites.net/api')

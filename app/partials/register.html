@@ -1,0 +1,58 @@
+<form class="form-horizontal" name="registerForm" ng-submit="login(credentials)">
+  <fieldset>
+    <legend>Register</legend>
+    <!-- Username -->
+    <div class="form-group">
+      <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control" id="inputUsername" placeholder="Username" required ng-model="credentials.username">
+      </div>
+    </div>
+
+    <!-- Passwords -->
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+      <div class="col-lg-3">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password" required ng-model="credentials.password">
+      </div>
+       <label for="confirmPassword" class="col-lg-2 control-label">Confirm Password</label>
+      <div class="col-lg-3">
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required ng-model="credentials.confirmPassword">
+      </div>
+    </div>
+
+    <!-- Name and Email -->
+     <div class="form-group">
+      <label for="registerName" class="col-lg-2 control-label">Name</label>
+      <div class="col-lg-3">
+        <input type="text" class="form-control" id="registerName" placeholder="Name" required ng-model="credentials.name">
+      </div>
+       <label for="inputPassword" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-3">
+        <input type="email" class="form-control" id="registerEmail" placeholder="Email" required ng-model="credentials.email">
+      </div>
+    </div>
+
+    <!-- Phone and town -->
+     <div class="form-group">
+      <label for="registerPhone" class="col-lg-2 control-label">Phone</label>
+      <div class="col-lg-3">
+        <input type="tel" class="form-control" id="registerPhone" placeholder="Phone" required ng-model="credentials.phone">
+      </div>
+       <label for="town" class="col-lg-2 control-label">Town</label>
+      <div class="col-lg-3">
+        <select  class="form-control" id="select" ng-model="credentials.town">
+         	<option ng-repeat="town in townsData" value="{{town.id}}">{{town.name}}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Submit  -->
+    <div class="form-group">
+      <div class="col-lg-3 col-lg-offset-2">
+        <button  type="submit" class="btn btn-primary">Register</button>
+        <button type="button" class="btn btn-default" ng-click="changeRoute('/login')">Login here</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
