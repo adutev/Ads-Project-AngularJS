@@ -1,1 +1,70 @@
-<div class="container">Home view</div>
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-9">
+			<ul>
+				<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage" total-items="totalAds"  class="well">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<h3 class="panel-title"><span class="pull-left">{{ad.title}}</span><spanh3 class="pull-right">{{ad.date | date: 'd-MMM-yyyy'}}</span></h3>
+							
+						</div>
+						<div class="panel-body">
+						    <div class="row">
+								<div class="col-md-4">
+									<img class="img-responsive" ng-src="{{ad.imageDataUrl}}" alt="">
+								</div>
+								<div class="col-md-8">
+									<div>{{ad.text}}</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div><strong>Name: </strong></div>
+											<div><strong>Email: </strong></div>
+											<div><strong> Phone: </strong></div>
+										</div>
+										<div class="col-md-8">
+											<div>{{ad.ownerName}}</div>
+											<div>{{ad.ownerEmail}}</div>
+										  	<div>{{ad.ownerPhone}}</div>
+										 </div>
+									</div>
+								</div>
+							</div>
+						 </div>						
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-3 filter-menues well">
+		  <input type="text" class="form-control" id="inputQuery" placeholder="Search" ng-model="query">
+		  <h3>Filter by: </h3>
+		  <div class="btn-group dropdown-filter">
+		    <button class="btn btn-primary btn-lg dropdown-toggle dropdown-filte-button" type="button" data-toggle="dropdown" aria-expanded="false"> {{categoryFilter}}
+		    <span class="caret"></span> </button>
+		    <ul class="dropdown-menu" role="menu">
+		      <li><a ng-click="filterByCategory('', 'Category')">All</a></li>
+		      <li ng-repeat="category in categoriesData">
+		        <a ng-click="filterByCategory(category.id, category.name)" class="filte-items-link">
+		        {{category.name}}</a>
+		      </li>
+		    </ul>
+		  </div>
+		  <div class="btn-group dropdown-filter">
+		    <button class="btn btn-primary btn-lg dropdown-toggle dropdown-filte-button" type="button" data-toggle="dropdown" aria-expanded="false" }> {{townFilter}}
+		    <span class="caret"></span>
+		    </button>
+		    <ul class="dropdown-menu" role="menu" >
+		      <li><a ng-click="filterByTown('', 'Town')">All</a></li>
+		      <li ng-repeat="town in townsData">
+		        <a ng-click="filterByTown(town.id, town.name)" class="filte-items-link" > {{town.name}}</a>
+		      </li>
+		    </ul>
+		  </div>
+		</div>
+		</div>
+	</div>
+</div>
+<div class="row pagination-div">
+  <div class='col-xs-12 col-centered'>
+       <dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="partials/dirPagination.html"></dir-pagination-controls>
+        </div>
+ </div>

@@ -1,9 +1,11 @@
-<form class="form-horizontal" name="registerForm" ng-submit="login(credentials)">
+<form class="form-horizontal col-md-10 well" name="registerForm" ng-submit="register(credentials)">
   <fieldset>
     <legend>Register</legend>
     <!-- Username -->
     <div class="form-group">
-      <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+      <div>
+        <label for="inputUsername" class="col-lg-2 control-label">Username</label>
+      </div>
       <div class="col-lg-3">
         <input type="text" class="form-control" id="inputUsername" placeholder="Username" required ng-model="credentials.username">
       </div>
@@ -50,7 +52,7 @@
     <!-- Submit  -->
     <div class="form-group">
       <div class="col-lg-3 col-lg-offset-2">
-        <button  type="submit" class="btn btn-primary">Register</button>
+        <button  type="submit" class="btn btn-primary" ng-disabled="(credentials.confirmPassword !== credentials.password)">Register</button>
         <button type="button" class="btn btn-default" ng-click="changeRoute('/login')">Login here</button>
       </div>
     </div>
