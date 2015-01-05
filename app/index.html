@@ -32,7 +32,6 @@
       </div>
       <div class="navbar-collapse collapse navbar-responsive-collapse">
         <ul class="nav navbar-nav">
-          <li><a href="#/">Home</a></li>
           <li ng-if="!userIsLogged"><a href="#/login">Login</a></li>
           <li ng-if="!userIsLogged"><a href="#/register">Register</a></li>
           <li ng-if="userIsLogged"><a href="#/logout" ng-click="logout()">Logout</a></li>
@@ -40,7 +39,7 @@
       </div>
     </div>
 
-    <div ng-view class="container">
+    <div ng-view class="container col-md-12" >
     </div>
 
     <!-- Include needed libraries and scripts -->

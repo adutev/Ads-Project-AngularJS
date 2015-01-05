@@ -1,6 +1,7 @@
 'use strict'
 
-app.controller('HomeController', ['$scope', '$http', 'getAds', 'getCategories', 'getTowns', function($scope, $http, getAds, getCategories, getTowns) {
+app.controller('HomeController', ['$scope', '$http', 'getAds', 'getCategories', 'getTowns', 'sessionControl', function($scope, $http, getAds, getCategories, getTowns, sessionControl) {
+
 	$scope.townFilter = "Town";
 	$scope.categoryFilter = "Category";
 

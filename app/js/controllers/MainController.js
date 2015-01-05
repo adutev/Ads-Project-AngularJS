@@ -3,15 +3,18 @@
 app.controller('MainController', ['$scope', '$rootScope', '$location', 'authorization', 'sessionControl', 'getAds', function($scope, $rootScope, $location, authorization, sessionControl, getAds) {
 	function refreshFrontPage() {
 		if (sessionControl.isLogged()) {
-			$scope.userIsLogged = true;
+			$rootScope.userIsLogged = true;
 		} else {
-			$scope.userIsLogged = false;
+			$rootScope.userIsLogged = false;
 			// $scope.clickedMyAdds = false;
 		}
 		// This event is sent by loginController when the user has logged 
 		// to hide login/register buttons
 		$rootScope.$on("loginSuccess", function() {
-			$scope.userIsLogged = true;
+			$rootScope.userIsLogged = true;
+		});
+		$rootScope.$on("logoutSuccess", function() {
+			$rootScope.userIsLogged = false;
 		});
 	}
 
@@ -22,7 +25,8 @@ app.controller('MainController', ['$scope', '$rootScope', '$location', 'authoriz
 		authorization.logout().then(function(data) {
 			sessionControl.deleteSession();
 			$rootScope.$broadcast('logoutSuccess');
-			$scope.userIsLogged = false;
+			$rootScope.userIsLogged = false;
+			refreshFrontPage();
 			$scope.changeRoute('/');
 
 		}, function() {

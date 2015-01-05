@@ -1,8 +1,12 @@
 /* app css stylesheet */
-ul {
+li {
 	list-style: none
 }
 
 .panel-heading {
-	padding-bottom: 26px;
+	padding-bottom: 25px;
+}
+
+.panel-title > span.pull-left {
+	width: 70%;
 }

@@ -1,11 +1,43 @@
 <div class="jumbotron">
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-3">
+			<div class="row">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						Navigation
+					</div>
+					<div class="panel-body ">
+						<ul class="nav nav-pills nav-stacked">
+							<li><a href="#/">Home</a></li>
+							<li ng-if="userIsLogged"><a href="">My Ads</a></li>
+							<li ng-if="userIsLogged"><a href="">Publich New Ad</a></li>
+							<li ng-if="userIsLogged"><a href="">Edit Profile</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="panel panel-primary" ng-if="userIsLogged">
+					<div class="panel-heading">
+						My ads
+					</div>
+					<div class="panel-body">
+						<ul class="nav nav-pills nav-stacked">
+							<li><a href="">All</a></li>
+							<li><a href="">Published</a></li>
+							<li><a href="">Waiting Approval</a></li>
+							<li><a href="">Inactive</a></li>
+							<li><a href="">Rejected</a></li>
+						</ul>
+					</div>
+				</div>	
+			</div>
+			<div class="row"></div>
+		</div>
+		<div class="col-md-6">
 			<ul>
-				<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage" total-items="totalAds"  class="well">
+				<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage" total-items="totalAds" >
 					<div class="panel panel-primary">
 						<div class="panel-heading">
-							<h3 class="panel-title"><span class="pull-left">{{ad.title}}</span><spanh3 class="pull-right">{{ad.date | date: 'd-MMM-yyyy'}}</span></h3>
+							<span class="panel-title"><span class="pull-left">{{ad.title}}</span><spanh3 class="pull-right">{{ad.date | date: 'd-MMM-yyyy'}}</span></span>
 							
 						</div>
 						<div class="panel-body">
@@ -33,6 +65,11 @@
 					</div>
 				</li>
 			</ul>
+			<div class="row pagination-div">
+				<div class='col-xs-12 col-centered'>
+			       <dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="partials/dirPagination.html"></dir-pagination-controls>
+			    </div>
+			 </div>
 		</div>
 		<div class="col-md-3 filter-menues well">
 		  <input type="text" class="form-control" id="inputQuery" placeholder="Search" ng-model="query">
@@ -63,8 +100,3 @@
 		</div>
 	</div>
 </div>
-<div class="row pagination-div">
-  <div class='col-xs-12 col-centered'>
-       <dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="partials/dirPagination.html"></dir-pagination-controls>
-        </div>
- </div>
