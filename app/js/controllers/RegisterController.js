@@ -16,6 +16,19 @@ app.controller('RegisterController', ['$scope', '$rootScope', '$location', 'auth
       console.log(response)
       $rootScope.$broadcast('registeredUser');
       $scope.changeRoute('/');
+      noty({
+        layout: 'top',
+        type: 'warning',
+        text: 'Super warning message everybody run!',
+        dismissQueue: true, 
+        animation: {
+          open: {height: 'toggle'},
+          close: {height: 'toggle'},
+          easing: 'swing',
+          speed: 500 
+          },
+        timeout: 0
+        });     
     }, function(error) {
       $rootScope.$broadcast('registeredFailed', error);
     });
