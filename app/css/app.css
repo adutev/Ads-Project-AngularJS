@@ -10,3 +10,15 @@ li {
 .panel-title > span.pull-left {
 	width: 70%;
 }
+
+input.ng-invalid.ng-dirty {
+	background-color: #FA787E;
+}
+
+input.ng-valid.ng-dirty {
+	background-color: #78FA89;
+}
+
+span.required, span.required:before {
+	content:"*";color:red;
+}

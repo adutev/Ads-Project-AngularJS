@@ -3,7 +3,8 @@
 // Declare app level module which depends on views, and components
 var app = angular.module('adsApplication', [
 	'ngRoute',
-	'angularUtils.directives.dirPagination'
+	'angularUtils.directives.dirPagination',
+	'ngMessages'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {

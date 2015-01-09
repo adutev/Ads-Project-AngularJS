@@ -1,4 +1,4 @@
-<form class="form-horizontal col-md-10 well" name="registerForm" ng-submit="register(credentials)">
+<form class="form-horizontal col-md-10 well" name="registerForm" ng-submit="register(credentials)" novalidate>
   <fieldset>
     <legend>Register</legend>
     <!-- Username -->
@@ -7,31 +7,42 @@
         <label for="inputUsername" class="col-lg-2 control-label">Username</label>
       </div>
       <div class="col-lg-3">
-        <input type="text" class="form-control" id="inputUsername" placeholder="Username" required ng-model="credentials.username">
+        <input type="text" class="form-control" id="inputUsername" name="inputUsername" placeholder="Username"
+          ng-model="credentials.username"
+          required>
       </div>
     </div>
-
     <!-- Passwords -->
     <div class="form-group">
       <label for="inputPassword" class="col-lg-2 control-label">Password</label>
       <div class="col-lg-3">
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password" required ng-model="credentials.password">
+        <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" 
+          ng-model="credentials.password" 
+          ng-minlength="2"
+          required>
       </div>
        <label for="confirmPassword" class="col-lg-2 control-label">Confirm Password</label>
       <div class="col-lg-3">
-        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required ng-model="credentials.confirmPassword">
+        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" 
+        ng-model="credentials.confirmPassword"
+        ng-minlength="2"
+        required>
       </div>
+      <div ng-show="(credentials.password !== credentials.confirmPassword) && registerForm.confirmPassword.$dirty"><span>Passwords do not match.</span></div>
     </div>
 
     <!-- Name and Email -->
      <div class="form-group">
       <label for="registerName" class="col-lg-2 control-label">Name</label>
       <div class="col-lg-3">
-        <input type="text" class="form-control" id="registerName" placeholder="Name" required ng-model="credentials.name">
+        <input type="text" class="form-control" id="registerName" name="registerName" placeholder="Name"
+        ng-model="credentials.name"
+        required>
       </div>
-       <label for="inputPassword" class="col-lg-2 control-label">Email</label>
+       <label for="registerEmail" class="col-lg-2 control-label">Email</label>
       <div class="col-lg-3">
-        <input type="email" class="form-control" id="registerEmail" placeholder="Email" required ng-model="credentials.email">
+        <input type="email" class="form-control" id="registerEmail" name="registerEmail" placeholder="Email" 
+        ng-model="credentials.email" required>
       </div>
     </div>
 
@@ -39,12 +50,11 @@
      <div class="form-group">
       <label for="registerPhone" class="col-lg-2 control-label">Phone</label>
       <div class="col-lg-3">
-        <input type="tel" class="form-control" id="registerPhone" placeholder="Phone" required ng-model="credentials.phone">
+        <input  type="number" pattern="[0-9]*" class="form-control" id="registerPhone" placeholder="Phone" ng-model="credentials.phone">
       </div>
-       <label for="town" class="col-lg-2 control-label">Town</label>
+       <label for="selectTown" class="col-lg-2 control-label">Town</label>
       <div class="col-lg-3">
-        <select  class="form-control" id="select" ng-model="credentials.town">
-         	<option ng-repeat="town in townsData" value="{{town.id}}">{{town.name}}</option>
+        <select  class="form-control" id="selectTown" ng-options="town.id as town.name for town in townsData" ng-model="credentials.town">
         </select>
       </div>
     </div>
@@ -52,7 +62,7 @@
     <!-- Submit  -->
     <div class="form-group">
       <div class="col-lg-3 col-lg-offset-2">
-        <button  type="submit" class="btn btn-primary" ng-disabled="(credentials.confirmPassword !== credentials.password)">Register</button>
+        <button  type="submit" class="btn btn-primary" ng-disabled="registerForm.$invalid || (credentials.password !== credentials.confirmPassword)">Register</button>
         <button type="button" class="btn btn-default" ng-click="changeRoute('/login')">Login here</button>
       </div>
     </div>
