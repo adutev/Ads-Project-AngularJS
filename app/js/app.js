@@ -4,7 +4,7 @@
 var app = angular.module('adsApplication', [
 	'ngRoute',
 	'angularUtils.directives.dirPagination',
-	'ngMessages'
+	'angular-growl'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
