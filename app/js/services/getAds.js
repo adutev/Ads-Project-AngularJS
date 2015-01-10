@@ -12,8 +12,6 @@ app.factory('getAds', function($http, $log, $q, BASE_URL) {
             .error(function(data, status, headers, config) {
                 deferred.reject(data, status, headers, config);
             });
-
-        console.log('getAllAds called');
         return deferred.promise;
     }
 

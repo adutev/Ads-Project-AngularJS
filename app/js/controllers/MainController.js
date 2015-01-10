@@ -1,15 +1,13 @@
 'use strict'
 
-app.controller('MainController', ['$scope', '$rootScope', '$location', 'authorization', 'sessionControl', 'getAds', function($scope, $rootScope, $location, authorization, sessionControl, getAds) {
+app.controller('MainController', ['$scope', '$rootScope', '$location', 'authorization', 'sessionControl', 'getAds', 'notifications', function($scope, $rootScope, $location, authorization, sessionControl, getAds, notifications) {
 	function refreshFrontPage() {
 		if (sessionControl.isLogged()) {
 			$rootScope.userIsLogged = true;
 		} else {
 			$rootScope.userIsLogged = false;
-			// $scope.clickedMyAdds = false;
 		}
-		// This event is sent by loginController when the user has logged 
-		// to hide login/register buttons
+
 		$rootScope.$on("loginSuccess", function() {
 			$rootScope.userIsLogged = true;
 		});
@@ -28,6 +26,7 @@ app.controller('MainController', ['$scope', '$rootScope', '$location', 'authoriz
 			$rootScope.userIsLogged = false;
 			refreshFrontPage();
 			$scope.changeRoute('/');
+			notifications.logoutSuccess();
 
 		}, function() {
 			$rootScope.$broadcast('logoutFailed');
@@ -37,5 +36,7 @@ app.controller('MainController', ['$scope', '$rootScope', '$location', 'authoriz
 	$scope.changeRoute = function(route) {
 		$location.path(route);
 	}
+
+	$scope.username = sessionControl.getUsername();
 
 }]);

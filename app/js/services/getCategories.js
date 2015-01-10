@@ -12,8 +12,7 @@ app.factory('getCategories', function($http, $log, $q, BASE_URL) {
             .error(function(data, status, headers, config) {
                 deferred.reject(data, status, headers, config);
             });
-
-            console.log('getAllCategories called');
+            
         return deferred.promise;
     }
 

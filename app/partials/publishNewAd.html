@@ -1,0 +1,53 @@
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-3">
+			<left-sidebar></left-sidebar>
+		</div>
+		<div class="col-md-9">
+			<form class="form-horizontal" name="publishAdForm" ng-submit="publishAd(ad)" novalidate>
+				<fieldset>
+					<legend>Publish New As</legend>
+					<div class="form-group">
+						<label for="title" class="col-lg-2 control-label">Title</label>
+						<div class="col-lg-10">
+							<input type="text" class="form-control" id="title" name="title" placeholder="Title" ng-model="ad.title" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="textArea" class="col-lg-2 control-label">Textarea</label>
+						<div class="col-lg-10">
+							<textarea class="form-control" rows="3" id="textArea" ng-model="ad.text" required></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="image" class="col-lg-2 control-label">Image:</label>
+			       		<input type="file" class="col-lg-2" id="image"
+			               onchange="angular.element(this).scope().fileSelected(this)" />
+				       	 <div class="image-box col-lg-8">
+				            <p>Image Preview</p>
+				        </div>
+					</div>
+					<div class="form-group">
+						<label for="selectCategorie" class="col-lg-2 control-label">Categrorie</label>
+						<div class="col-lg-3">
+							<select  class="form-control" id="selectCategorie" ng-options="categorie.id as categorie.name for categorie in categoriesData" ng-model="ad.categoryid" required>
+							</select>
+						</div>
+						<label for="selectTown" class="col-lg-2 control-label">Town</label>
+						<div class="col-lg-3">
+							<select  class="form-control" id="selectTown" ng-options="town.id as town.name for town in townsData" ng-model="ad.townid" required>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-lg-3 col-lg-offset-2">
+							<button  type="submit" class="btn btn-primary" ng-disabled="publishAdForm.$invalid">Publish</button>
+							<button type="button" class="btn btn-default" ng-click="changeRoute('/')">Cancel</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>

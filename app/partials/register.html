@@ -8,8 +8,8 @@
       </div>
       <div class="col-lg-3">
         <input type="text" class="form-control" id="inputUsername" name="inputUsername" placeholder="Username"
-          ng-model="credentials.username"
-          required>
+        ng-model="credentials.username"
+        required>
       </div>
     </div>
     <!-- Passwords -->
@@ -17,11 +17,11 @@
       <label for="inputPassword" class="col-lg-2 control-label">Password</label>
       <div class="col-lg-3">
         <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" 
-          ng-model="credentials.password" 
-          ng-minlength="2"
-          required>
+        ng-model="credentials.password" 
+        ng-minlength="2"
+        required>
       </div>
-       <label for="confirmPassword" class="col-lg-2 control-label">Confirm Password</label>
+      <label for="confirmPassword" class="col-lg-2 control-label">Confirm Password</label>
       <div class="col-lg-3">
         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" 
         ng-model="credentials.confirmPassword"
@@ -32,14 +32,14 @@
     </div>
 
     <!-- Name and Email -->
-     <div class="form-group">
+    <div class="form-group">
       <label for="registerName" class="col-lg-2 control-label">Name</label>
       <div class="col-lg-3">
         <input type="text" class="form-control" id="registerName" name="registerName" placeholder="Name"
         ng-model="credentials.name"
         required>
       </div>
-       <label for="registerEmail" class="col-lg-2 control-label">Email</label>
+      <label for="registerEmail" class="col-lg-2 control-label">Email</label>
       <div class="col-lg-3">
         <input type="email" class="form-control" id="registerEmail" name="registerEmail" placeholder="Email" 
         ng-model="credentials.email" required>
@@ -47,12 +47,12 @@
     </div>
 
     <!-- Phone and town -->
-     <div class="form-group">
+    <div class="form-group">
       <label for="registerPhone" class="col-lg-2 control-label">Phone</label>
       <div class="col-lg-3">
         <input  type="number" pattern="[0-9]*" class="form-control" id="registerPhone" placeholder="Phone" ng-model="credentials.phone">
       </div>
-       <label for="selectTown" class="col-lg-2 control-label">Town</label>
+      <label for="selectTown" class="col-lg-2 control-label">Town</label>
       <div class="col-lg-3">
         <select  class="form-control" id="selectTown" ng-options="town.id as town.name for town in townsData" ng-model="credentials.town">
         </select>

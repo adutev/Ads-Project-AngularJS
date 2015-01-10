@@ -13,7 +13,6 @@ app.factory('getTowns', function($http, $log, $q, BASE_URL) {
                 deferred.reject(data, status, headers, config);
             });
 
-            console.log('getAllTowns called');
         return deferred.promise;
     }
 

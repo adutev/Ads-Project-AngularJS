@@ -1,0 +1,39 @@
+<div>
+	<img id="loading-icon" ng-hide="ready" src="images/loading.gif">
+	<ul ng-cloak>
+		<li dir-paginate="ad in adsData.ads | filter: query | itemsPerPage: adsPerPage" total-items="totalAds" >
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<span class="panel-title"><span class="pull-left">{{ad.title}}</span><spanh3 class="pull-right">{{ad.date | date: 'd-MMM-yyyy'}}</span></span>					
+				</div>
+				<div class="panel-body">
+				    <div class="row">
+						<div class="col-md-4">
+							<img class="img-responsive" ng-src="{{ad.imageDataUrl}}" alt="">
+						</div>
+						<div class="col-md-8">
+							<div>{{ad.text}}</div>
+							<div class="row">
+								<div class="col-md-4">
+									<div><strong>Name: </strong></div>
+									<div><strong>Email: </strong></div>
+									<div><strong> Phone: </strong></div>
+								</div>
+								<div class="col-md-8">
+									<div>{{ad.ownerName}}</div>
+									<div>{{ad.ownerEmail}}</div>
+								  	<div>{{ad.ownerPhone}}</div>
+								 </div>
+							</div>
+						</div>
+					</div>
+				 </div>						
+			</div>
+		</li>
+	</ul>
+	<div class="row pagination-div">
+		<div class='col-xs-12 col-centered'>
+	       <dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="partials/dirPagination.html"></dir-pagination-controls>
+	    </div>
+	</div>
+</div>

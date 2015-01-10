@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('RegisterController', ['$scope', '$rootScope', '$location', 'authorization', 'getTowns', function($scope, $rootScope, $location, authorization, getTowns) {
+app.controller('RegisterController', ['$scope', '$rootScope', '$location', 'authorization', 'getTowns', 'notifications', function($scope, $rootScope, $location, authorization, getTowns, notifications) {
   $scope.credentials = {
     username: '',
     password: ''
@@ -13,18 +13,11 @@ app.controller('RegisterController', ['$scope', '$rootScope', '$location', 'auth
 
   $scope.register = function(credentials) {
     authorization.register(credentials).then(function(response) {
-      console.log(response)
       $rootScope.$broadcast('registeredUser');
+      notifications.registerSuccess();
       $scope.changeRoute('/');
     }, function(error) {
-      $rootScope.$broadcast('registeredFailed', error);
+      notifications.registerFailed(error)
     });
   }
-
-  $rootScope.$on("registeredFailed", function(event, data) {
-    for (var i in data.modelState[""]) {
-      console.log(data.modelState[""][i]);
-
-    }
-  });
 }])

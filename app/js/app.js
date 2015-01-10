@@ -12,14 +12,27 @@ app.config(['$routeProvider', function($routeProvider) {
 		templateUrl: 'partials/home.html',
 		controller: 'HomeController'
 	});
+
 	$routeProvider.when('/register', {
 		templateUrl: 'partials/register.html',
 		controller: 'RegisterController'
 	});
+
 	$routeProvider.when('/login', {
 		templateUrl: 'partials/login.html',
 		controller: 'LoginController'
 	});
+
+	$routeProvider.when('/publishNewAd', {
+		templateUrl: 'partials/publishNewAd.html',
+		controller: 'PublishNewAdController'
+	});
+
+	$routeProvider.when('/userAds', {
+		templateUrl: 'partials/userAds.html',
+		controller: 'UserAdsController'
+	});
+	
 	$routeProvider.when('/unauthorized', {
 		templateUrl: 'partials/notAuthorized.html'
 	});
@@ -28,11 +41,17 @@ app.config(['$routeProvider', function($routeProvider) {
 	});
 }]);
 
+
+app.config(['growlProvider', function(growlProvider) {
+	growlProvider.globalTimeToLive(4000);
+	growlProvider.globalPosition('top-center');
+}]);
+
 app.run(function($rootScope, $location) {
 	$rootScope.$on('$routeChangeStart', function(event, next) {
 		var path = $location.path();
 		if ($rootScope.userIsLogged && (path === '/login' ||
-			path === '/register')) {
+				path === '/register')) {
 			$location.path('/');
 		}
 	});

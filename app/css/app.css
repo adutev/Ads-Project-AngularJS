@@ -22,3 +22,13 @@ input.ng-valid.ng-dirty {
 span.required, span.required:before {
 	content:"*";color:red;
 }
+
+#loading-icon {
+	width: 150px;
+	margin-left: 35%;
+}
+
+button.btn-sm {
+	margin-top: 2px;
+	width: 75%;
+}

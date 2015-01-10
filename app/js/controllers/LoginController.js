@@ -1,6 +1,6 @@
 'use strict'
 
-app.controller('LoginController', ['$scope', '$rootScope', '$location', 'authorization', 'sessionControl', function($scope, $rootScope, $location, authorization, sessionControl){
+app.controller('LoginController', ['$scope', '$rootScope', '$location', 'authorization', 'sessionControl', 'notifications', function($scope, $rootScope, $location, authorization, sessionControl, notifications){
 	$scope.credentials = {
         username: '',
         password: ''
@@ -11,14 +11,10 @@ app.controller('LoginController', ['$scope', '$rootScope', '$location', 'authori
             sessionControl.saveCurrentSession(user);
             $rootScope.$broadcast('loginSuccess');
             $scope.changeRoute('/');
-            // noty({
-            //     text: 'Happy!',
-            //     layout: 'topCenter',
-            //     type: 'success'
-            // });
-
-        }, function() {
+            notifications.loginSuccess();
+        }, function(error) {
             $rootScope.$broadcast('loginFailed');
+            notifications.loginFailed(error);
         });
 	}
 }])
