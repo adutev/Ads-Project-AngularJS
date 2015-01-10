@@ -40,6 +40,15 @@ app.factory('notifications', ['growl', function(growl) {
     function adSuccessfullyPublished() {
         growl.success("Advertisement submitted for approval. Once approved, it will be published.");
     }
+
+    function adDeleted() {
+        growl.success("Ad deleted.");
+    }
+
+    function adDeleteError(error) {
+        growl.error(error);
+    }
+    
     return {
         loginSuccess: loginSuccess,
         loginFailed: loginFailed,
@@ -50,6 +59,8 @@ app.factory('notifications', ['growl', function(growl) {
         adPublishError: adPublishError,
         adSuccessfullyDeactivated: adSuccessfullyDeactivated,
         adDeactivationError: adDeactivationError,
-        adSuccessfullyPublished: adSuccessfullyPublished
+        adSuccessfullyPublished: adSuccessfullyPublished,
+        adDeleted: adDeleted,
+        adDeleteError: adDeleteError
     };
 }])

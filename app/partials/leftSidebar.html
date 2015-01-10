@@ -1,14 +1,14 @@
 <div class="row">
-	<div class="panel panel-primary">
+	<div class="panel panel-primary" ng-show="userIsLogged">
 		<div class="panel-heading">
 			Navigation
 		</div>
 		<div class="panel-body ">
 			<ul class="nav nav-pills nav-stacked">
-				<li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
-				<li ng-if="userIsLogged" ng-class="{ active: isActive('/userAds')}"><a href="#/userAds">My Ads</a></li>
-				<li ng-if="userIsLogged" ng-class="{ active: isActive('/publishNewAd')}"><a href="#/publishNewAd">Publich New Ad</a></li>
-				<li ng-if="userIsLogged" ng-class="{ active: isActive('/editProfile')}"  ><a href="#/editProfile">Edit Profile</a></li>
+				<li ng-class="{ active: isActive('/user/home')}"><a href="#/user/home">Home</a></li>
+				<li ng-class="{ active: isActive('/user/ads')}"><a href="#/user/ads">My Ads</a></li>
+				<li ng-class="{ active: isActive('/user/ads/publish')}"><a href="#/user/ads/publish">Publich New Ad</a></li>
+				<li ng-class="{ active: isActive('/editProfile')}"  ><a href="#/editProfile">Edit Profile</a></li>
 			</ul>
 		</div>
 	</div>

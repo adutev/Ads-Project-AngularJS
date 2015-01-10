@@ -10,7 +10,7 @@ app.controller('LoginController', ['$scope', '$rootScope', '$location', 'authori
 		 authorization.login(credentials).then(function(user) {
             sessionControl.saveCurrentSession(user);
             $rootScope.$broadcast('loginSuccess');
-            $scope.changeRoute('/');
+            $scope.changeRoute('/user/home');
             notifications.loginSuccess();
         }, function(error) {
             $rootScope.$broadcast('loginFailed');

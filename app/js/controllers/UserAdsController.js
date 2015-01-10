@@ -49,4 +49,13 @@ app.controller('UserAdsController', ['$scope', '$http', '$route', 'adsServices',
 		});
 	}
 
+	$scope.deleteAd = function(id) {
+		adsServices.deleteAd(id).then(function(data) {
+			$route.reload();
+			notifications.adDeleted();
+		}, function(error) {
+			notifications.adDeleteError(error)
+		});
+	}
+
 }]);

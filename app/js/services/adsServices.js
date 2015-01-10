@@ -41,6 +41,8 @@ app.factory('adsServices', ['$http', '$q', 'BASE_URL', 'sessionControl', functio
 
 		return deferred.promise;
 	}
+
+
 	function deactivateAd(id) {
 		var deferred = $q.defer();
 		var headers = {
@@ -83,11 +85,33 @@ app.factory('adsServices', ['$http', '$q', 'BASE_URL', 'sessionControl', functio
 		return deferred.promise;
 	}
 
+	function deleteAd(id) {
+		var deferred = $q.defer();
+		var headers = {
+			'Authorization': 'Bearer ' + sessionControl.getAccessToken()
+		};
+
+		$http({
+				method: 'DELETE',
+				url: BASE_URL + '/user/ads/' + id,
+				headers: headers
+			})
+			.success(function(data, status, headers, config) {
+				deferred.resolve(data, status, headers, config);
+			})
+			.error(function(data, status, headers, config) {
+				deferred.reject(data, status, headers, config);
+			});
+
+		return deferred.promise;
+	}
+
 	return {
 		createNewAd: createNewAd,
 		getUserAds: getUserAds,
 		deactivateAd: deactivateAd,
-		publishAgain: publishAgain
+		publishAgain: publishAgain,
+		deleteAd: deleteAd
 	}
 
 

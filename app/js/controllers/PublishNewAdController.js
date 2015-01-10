@@ -38,7 +38,7 @@ app.controller('PublishNewAdController', ['$scope', 'getTowns', 'getCategories',
 	$scope.publishAd = function(ad) {
 		 adsServices.createNewAd(ad).then(function() {
            	notifications.adSuccessfullyPublished();				
-			$scope.changeRoute('/');
+			$scope.changeRoute('/user/home');
         }, function(error) {
            notifications.adPublishError(error);
         });

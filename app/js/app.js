@@ -23,12 +23,16 @@ app.config(['$routeProvider', function($routeProvider) {
 		controller: 'LoginController'
 	});
 
-	$routeProvider.when('/publishNewAd', {
+	$routeProvider.when('/user/home', {
+		templateUrl: 'partials/home.html',
+		controller: 'HomeController'
+	});
+	$routeProvider.when('/user/ads/publish', {
 		templateUrl: 'partials/publishNewAd.html',
 		controller: 'PublishNewAdController'
 	});
 
-	$routeProvider.when('/userAds', {
+	$routeProvider.when('/user/ads', {
 		templateUrl: 'partials/userAds.html',
 		controller: 'UserAdsController'
 	});
@@ -52,7 +56,7 @@ app.run(function($rootScope, $location) {
 		var path = $location.path();
 		if ($rootScope.userIsLogged && (path === '/login' ||
 				path === '/register')) {
-			$location.path('/');
+			$location.path('/user/home');
 		}
 	});
 });

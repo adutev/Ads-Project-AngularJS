@@ -5,7 +5,7 @@ app.controller('LeftSidebarController', ['$scope', '$rootScope', '$location', 's
         return viewLocation === $location.path();
     };
 
-    $scope.showUserAdsFilter = $scope.isActive('/userAds');
+    $scope.showUserAdsFilter = $scope.isActive('/user/ads');
 
     $scope.showAllAds = function() {
     	// body...
