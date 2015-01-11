@@ -1,0 +1,46 @@
+<div class="jumbotron">
+	<div class="row">
+		<div class="col-md-3">
+			<left-sidebar></left-sidebar>
+		</div>
+		<div class="col-md-6">
+			<form class="form-horizontal well" name="deleteAdForm" ng-submit="deleteAd(adData.id)" novalidate>
+				<fieldset>
+					<legend>Confirm delete ad?</legend>
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<span class="panel-title"><span class="pull-left">{{adData.title}}</span><spanh3 class="pull-right">{{adData.date | date: 'd-MMM-yyyy'}}</span></span>					
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-md-4">
+									<img class="img-responsive" ng-src="{{adData.imageDataUrl}}" alt="">
+								</div>
+								<div class="col-md-8">
+									<div>{{adData.text}}</div>
+									<div class="row">
+										<div class="col-md-4">
+											<div><strong>Category: </strong></div>
+											<div><strong>Town: </strong></div>
+										</div>
+										<div class="col-md-8">
+											<div>{{adData.categoryName}}</div>
+											<div>{{adData.townName}}</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-lg-3 col-lg-offset-2">
+							<button  type="submit" class="btn btn-primary">Delete</button>
+							<button type="button" class="btn btn-default" ng-click="changeRoute('/user/home')">Cancel</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>

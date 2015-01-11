@@ -28,7 +28,7 @@ span.required, span.required:before {
 	margin-left: 35%;
 }
 
-button.btn-sm {
+a.btn-sm {
 	margin-top: 2px;
 	width: 75%;
 }

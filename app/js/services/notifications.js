@@ -30,19 +30,15 @@ app.factory('notifications', ['growl', function(growl) {
     }
 
     function adSuccessfullyDeactivated() {
-        growl.success("Ad deactivation success.");
+        growl.success("Advertisment deactivation success.");
     }
 
     function adDeactivationError(error) {
         growl.error(error);
     }
 
-    function adSuccessfullyPublished() {
-        growl.success("Advertisement submitted for approval. Once approved, it will be published.");
-    }
-
     function adDeleted() {
-        growl.success("Ad deleted.");
+        growl.success("Advertisment deleted.");
     }
 
     function adDeleteError(error) {

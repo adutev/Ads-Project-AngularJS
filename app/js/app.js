@@ -36,7 +36,12 @@ app.config(['$routeProvider', function($routeProvider) {
 		templateUrl: 'partials/userAds.html',
 		controller: 'UserAdsController'
 	});
-	
+
+	$routeProvider.when('/user/ads/delete/:id', {
+		templateUrl: 'partials/deleteAd.html',
+		controller: 'DeleteAdController'
+	});
+
 	$routeProvider.when('/unauthorized', {
 		templateUrl: 'partials/notAuthorized.html'
 	});

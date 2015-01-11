@@ -27,10 +27,10 @@
 						</div>
 						<div class="col-md-3">
 							<div><strong>Status: {{ad.status}}</strong></div>
-							<button ng-show="(ad.status === 'Published') || (ad.status === 'WaitingApproval')" class="btn btn-primary btn-sm" ng-click="deactivateAd(ad.id)">Deactivate</button>
-							<button class="btn btn-primary btn-sm" ng-click="editAd(ad.id)">Edit</button>
-							<button ng-if="ad.status === 'Inactive'" class="btn btn-primary btn-sm" ng-click="publishAgain(ad.id)">Publish again</button>
-							<button class="btn btn-primary btn-sm" ng-click="deleteAd(ad.id)">Delete</button>
+							<a ng-show="(ad.status === 'Published') || (ad.status === 'WaitingApproval')" class="btn btn-primary btn-sm" ng-click="deactivateAd(ad.id)">Deactivate</a>
+							<a class="btn btn-primary btn-sm" ng-click="editAd(ad.id)">Edit</a>
+							<a ng-if="ad.status === 'Inactive'" class="btn btn-primary btn-sm" ng-click="publishAgain(ad.id)">Publish again</a>
+							<a class="btn btn-primary btn-sm" href="#/user/ads/delete/{{ad.id}}">Delete</a>
 						</div>
 					</div>
 				</div>
