@@ -37,6 +37,11 @@ app.config(['$routeProvider', function($routeProvider) {
 		controller: 'UserAdsController'
 	});
 
+	$routeProvider.when('/user/ads/:status', {
+		templateUrl: 'partials/userAds.html',
+		controller: 'UserAdsController'
+	});
+
 	$routeProvider.when('/user/ads/delete/:id', {
 		templateUrl: 'partials/deleteAd.html',
 		controller: 'DeleteAdController'

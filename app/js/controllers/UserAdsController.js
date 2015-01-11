@@ -1,12 +1,11 @@
 'use strict'
 
-app.controller('UserAdsController', ['$scope', '$http', '$route', 'adsServices', 'sessionControl', 'notifications', function($scope, $http, $route, adsServices, sessionControl, notifications) {
+app.controller('UserAdsController', ['$scope', '$http', '$route', '$routeParams', 'adsServices', 'sessionControl', 'notifications', function($scope, $http, $route, $routeParams, adsServices, sessionControl, notifications) {
 	$scope.ready = false;
-
+	
 	var currentCategoryId = '',
 		currentTownId = '',
 		currentPage = 1;
-
 
 	$scope.totalAds = 0;
 	$scope.adsPerPage = 5;
@@ -16,12 +15,14 @@ app.controller('UserAdsController', ['$scope', '$http', '$route', 'adsServices',
 		current: 1
 	};
 
+
 	$scope.pageChanged = function(newPage) {
 		getResultsPage(newPage);
 	};
 
 	function getResultsPage(pageNumber) {
-		adsServices.getUserAds(pageNumber).then(function(data) {
+		var adStatus = $routeParams.status || '';
+		adsServices.getUserAds(pageNumber, adStatus).then(function(data) {
 			$scope.adsData = data;
 			$scope.ready = true;
 			$scope.totalAds = parseInt(data.numPages) * 5;

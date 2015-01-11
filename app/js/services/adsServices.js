@@ -21,15 +21,16 @@ app.factory('adsServices', ['$http', '$q', 'BASE_URL', 'sessionControl', functio
 		return deferred.promise;
 	}
 
-	function getUserAds(pageNumber) {
+	function getUserAds(pageNumber, adStatus) {
 		var deferred = $q.defer();
 		var headers = {
 			'Authorization': 'Bearer ' + sessionControl.getAccessToken()
 		};
 
+		var status = adStatus || '';
 		$http({
 				method: 'GET',
-				url: BASE_URL + '/user/ads?pagesize=5&startpage=' + pageNumber,
+				url: BASE_URL + '/user/ads?pagesize=5&startpage=' + pageNumber + '&status=' + adStatus,
 				headers: headers
 			})
 			.success(function(data, status, headers, config) {

@@ -32,3 +32,8 @@ a.btn-sm {
 	margin-top: 2px;
 	width: 75%;
 }
+
+.activeFilter {
+	background-color: #eeeeee;
+	border-radius: 4px;
+}

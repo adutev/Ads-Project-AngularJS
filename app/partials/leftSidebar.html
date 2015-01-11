@@ -18,11 +18,11 @@
 		</div>
 		<div class="panel-body">
 			<ul class="nav nav-pills nav-stacked">
-				<li><a href="">All</a></li>
-				<li><a href="">Published</a></li>
-				<li><a href="">Waiting Approval</a></li>
-				<li><a href="">Inactive</a></li>
-				<li><a href="">Rejected</a></li>
+				<li ng-class="{ activeFilter: isActive('/user/ads')}"><a href="#/user/ads">All</a></li>
+				<li ng-class="{ activeFilter: isActive('/user/ads/published')}"><a href="#/user/ads/published">Published</a></li>
+				<li ng-class="{ activeFilter: isActive('/user/ads/waitingapproval')}"><a href="#/user/ads/waitingapproval">Waiting Approval</a></li>
+				<li ng-class="{ activeFilter: isActive('/user/ads/inactive')}"><a href="#/user/ads/inactive">Inactive</a></li>
+				<li ng-class="{ activeFilter: isActive('/user/ads/rejected')}"><a href="#/user/ads/rejected">Rejected</a></li>
 			</ul>
 		</div>
 	</div>	

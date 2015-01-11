@@ -2,7 +2,6 @@
 
 app.controller('DeleteAdController', ['$scope', '$routeParams', 'adsServices', 'notifications', function($scope, $routeParams, adsServices, notifications) {
 	var adId = $routeParams.id;
-	console.log(adId)
 	adsServices.getUserAdById(adId).then(function(data) {
 			$scope.adData = data;
 		}),

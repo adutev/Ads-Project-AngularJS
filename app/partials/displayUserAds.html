@@ -11,7 +11,7 @@
 						<div class="col-md-3">
 							<img class="img-responsive" ng-src="{{ad.imageDataUrl}}" alt="">
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-8">
 							<div>{{ad.text}}</div>
 							<div class="row">
 								<div class="col-md-4">
@@ -28,15 +28,16 @@
 						<div class="col-md-3">
 							<div><strong>Status: {{ad.status}}</strong></div>
 							<a ng-show="(ad.status === 'Published') || (ad.status === 'WaitingApproval')" class="btn btn-primary btn-sm" ng-click="deactivateAd(ad.id)">Deactivate</a>
-							<a class="btn btn-primary btn-sm" ng-click="editAd(ad.id)">Edit</a>
+							<a ng-if="ad.status === 'Inactive'" class="btn btn-primary btn-sm" ng-click="editAd(ad.id)">Edit</a>
 							<a ng-if="ad.status === 'Inactive'" class="btn btn-primary btn-sm" ng-click="publishAgain(ad.id)">Publish again</a>
-							<a class="btn btn-primary btn-sm" href="#/user/ads/delete/{{ad.id}}">Delete</a>
+							<a ng-if="ad.status === 'Inactive'" class="btn btn-primary btn-sm" href="#/user/ads/delete/{{ad.id}}">Delete</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</li>
 	</ul>
+	<p  ng-show="adsData.numItems === 0">No ads to display</p>
 	<div class="row pagination-div">
 		<div class='col-xs-12 col-centered'>
 			<dir-pagination-controls boundary-links="true" on-page-change="pageChanged(newPageNumber)" template-url="partials/dirPagination.html"></dir-pagination-controls>
